@@ -10,10 +10,10 @@ namespace ConsoleApplication2
 	{
 		static void Main(string[] args)
 		{
-			ServiceModel1 srv = new Logger1() { Next = new BL1() };
+			test1.ServiceModel1 srv = new test1.Logger1() { Next = new test1.BL1() };
 			srv.Post(new Model1 { Stuff = "boo" });
 
-			Service srv2 = new Logger2() { Next = new BL2() };
+			test2.CrudService srv2 = new test2.Logger2() { Next = new test2.BL2() };
 			srv2.Post(new Model2 { otherStuff = 42 });
 
 		}
