@@ -8,15 +8,15 @@ namespace ConsoleApplication2.test2
 {
 	interface ICrudService
 	{
-		void Post(object data);
+		object Post(object data);
 	}
 
 	class CrudService: ICrudService
 	{
 		public CrudService Next;
 
-		public virtual void Post(object data)
-		{ Next?.Post(data); }
+		public virtual object Post(object data)
+		{ return Next?.Post(data); }
 	}
 
 	abstract class ServiceModel2: CrudService
@@ -32,25 +32,27 @@ namespace ConsoleApplication2.test2
 
 	class Logger2 : ServiceModel2
 	{
-		public override void Post(object dataobject)
+		public override object Post(object dataobject)
 		{
 			Model2 data = getData(dataobject);
 			//do stuff
 			Console.WriteLine("Enter logger2: " + data.otherStuff);
-			base.Post(data);
+			var returnvalue=base.Post(data);
 			Console.WriteLine("Leaving logger2");
+
+			return returnvalue;
 			//log stuff
 		}
 	}
 
 	class BL2 : ServiceModel2
 	{
-		public override void Post(object dataobject)
+		public override object Post(object dataobject)
 		{
 			Model2 data = getData(dataobject);
 			//do stuff
 			Console.WriteLine("Enter BL2: " + data.otherStuff);
-			base.Post(data);
+			return new Model2();
 			Console.WriteLine("Leaving BL2");
 			//return stuff
 		}
