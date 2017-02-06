@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication2.test2
 {
-	class CrudService
+	interface ICrudService
+	{
+		void Post(object data);
+	}
+
+	class CrudService: ICrudService
 	{
 		public CrudService Next;
 

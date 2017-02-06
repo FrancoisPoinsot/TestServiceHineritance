@@ -13,7 +13,7 @@ namespace ConsoleApplication2
 			test1.ServiceModel1 srv = new test1.Logger1() { Next = new test1.BL1() };
 			srv.Post(new Model1 { Stuff = "boo" });
 
-			test2.CrudService srv2 = new test2.Logger2() { Next = new test2.BL2() };
+			test2.ICrudService srv2 = new test2.Logger2() { Next = new test2.BL2() };
 			srv2.Post(new Model2 { otherStuff = 42 });
 
 		}
