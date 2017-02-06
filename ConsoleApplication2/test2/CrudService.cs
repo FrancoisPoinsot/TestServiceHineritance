@@ -32,7 +32,7 @@ namespace ConsoleApplication2.test2
 			Model2 data = getData(dataobject);
 			//do stuff
 			Console.WriteLine("Enter logger2: " + data.otherStuff);
-			base.Post((object)data);
+			base.Post(data);
 			Console.WriteLine("Leaving logger2");
 			//log stuff
 		}
@@ -45,7 +45,7 @@ namespace ConsoleApplication2.test2
 			Model2 data = getData(dataobject);
 			//do stuff
 			Console.WriteLine("Enter BL2: " + data.otherStuff);
-			base.Post((object)data);
+			base.Post(data);
 			Console.WriteLine("Leaving BL2");
 			//return stuff
 		}
