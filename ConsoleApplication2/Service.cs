@@ -6,33 +6,46 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication2
 {
-	class ServiceModel1
+	class Service
 	{
-		public ServiceModel1 Next;
+		public Service Next;
 
-		public virtual void Post(Model1 data)
+		public virtual void Post(object data)
 		{ Next?.Post(data); }
 	}
 
-	class Logger1 : ServiceModel1
+	abstract class ServiceModel2:Service
 	{
-		public override void Post(Model1 data)
+		protected Model2 getData(object dataObject)
 		{
+			Model2 data;
+			if (!(dataObject is Model2))
+			{ throw new Exception("oops"); }
+			return (Model2)dataObject;
+		}
+	}
+
+	class Logger2 : ServiceModel2
+	{
+		public override void Post(object dataobject)
+		{
+			Model2 data = getData(dataobject);
 			//do stuff
-			Console.WriteLine("Enter logger1: "+ data.Stuff);
-			base.Post(data);
+			Console.WriteLine("Enter logger1: " + data.otherStuff);
+			base.Post((object)data);
 			Console.WriteLine("Leaving logger1");
 			//log stuff
 		}
 	}
 
-	class BL1: ServiceModel1
+	class BL2 : ServiceModel2
 	{
-		public override void Post(Model1 data)
+		public override void Post(object dataobject)
 		{
+			Model2 data = getData(dataobject);
 			//do stuff
-			Console.WriteLine("Enter BL1: " + data.Stuff);
-			base.Post(data);
+			Console.WriteLine("Enter BL1: " + data.otherStuff);
+			base.Post((object)data);
 			Console.WriteLine("Leaving BL1");
 			//return stuff
 		}

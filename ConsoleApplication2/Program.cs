@@ -12,6 +12,10 @@ namespace ConsoleApplication2
 		{
 			ServiceModel1 srv = new Logger1() { Next = new BL1() };
 			srv.Post(new Model1 { Stuff = "boo" });
+
+			Service srv2 = new Logger2() { Next = new BL2() };
+			srv2.Post(new Model2 { otherStuff = 42 });
+
 		}
 	}
 }
